@@ -1,0 +1,25 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nile">
+  <defs>
+    <radialGradient id="nSun" cx="50%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#f2d178"/>
+      <stop offset="42%" stop-color="#e0b23f"/>
+      <stop offset="100%" stop-color="#cf9d28"/>
+    </radialGradient>
+    <linearGradient id="nBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#efdcc0"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="nWave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8a5a28"/>
+      <stop offset="50%" stop-color="#6e4620"/>
+      <stop offset="100%" stop-color="#9a6a30"/>
+    </linearGradient>
+    <clipPath id="nDisc"><circle cx="50" cy="50" r="48"/></clipPath>
+  </defs>
+  <g clip-path="url(#nDisc)">
+    <rect x="0" y="0" width="100" height="100" fill="url(#nSun)"/>
+    <path d="M-2,58 C12,47 24,47 38,56 C50,64 60,64 72,55 C84,48 94,50 102,54 L102,102 L-2,102 Z" fill="url(#nBase)"/>
+    <path d="M-2,58 C12,47 24,47 38,56 C50,64 60,64 72,55 C84,48 94,50 102,54" fill="none" stroke="url(#nWave)" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#2a2018" stroke-opacity="0.10" stroke-width="1"/>
+</svg>

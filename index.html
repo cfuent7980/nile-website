@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nile Productivity — We design and build mobile apps.</title>
+  <meta name="description" content="Nile Productivity is a mobile app development studio. We design, build, and ship polished iOS & Android apps — our own products and software for clients." />
+
+  <!-- ============ SOCIAL ============ -->
+  <meta property="og:title" content="Nile Productivity — We design and build mobile apps." />
+  <meta property="og:description" content="A mobile app development studio building polished iOS & Android products — our own and for clients." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nileproductivity.com/" />
+  <meta property="og:image" content="https://nileproductivity.com/icon.svg" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- ============ ICONS ============ -->
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <meta name="theme-color" content="#f4ece0" />
+
+  <!-- ============ FONTS ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ============ TAILWIND ============ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#f4ece0',   // page background — warm sand
+            sand:  '#efe4d2',   // subtle raised wash
+            paper: '#ffffff',   // cards / lockups
+            tan:   '#e3cfa9',   // blush accent
+            gold:  { DEFAULT:'#d7a832', bright:'#e9c565', deep:'#b98d1f' },
+            bronze:'#8a5a28',   // deep waterline
+            ink:   '#2a2018',   // espresso — dark surfaces + primary text
+            ink2:  '#4a3f31',   // softened ink
+            muted: '#6f6151',   // secondary text (AA on cream)
+            line:  '#e6dac6',   // hairline border
+          },
+          boxShadow: {
+            lift: '0 1px 2px rgba(42,32,24,.05), 0 10px 30px -12px rgba(42,32,24,.18)',
+            gold: '0 8px 24px -8px rgba(215,168,50,.5)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root{ --ease: cubic-bezier(.16,1,.3,1); }
+    html, body{ background:#f4ece0; overflow-x:clip; }
+    body{
+      background-image: radial-gradient(120% 90% at 50% -8%, #fbf5ea 0%, #f4ece0 46%, #efe3d0 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+    .eyebrow{ font-family:'Inter',sans-serif; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.2em; color:#b98d1f; }
+    .wordmark-caps{ font-family:'Inter',sans-serif; text-transform:uppercase; letter-spacing:.34em; font-weight:500; }
+    .nav-link{ position:relative; }
+    .nav-link::after{ content:""; position:absolute; left:0; bottom:-4px; height:1.5px; width:100%; background:linear-gradient(90deg,#d7a832,#8a5a28); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+    .nav-link:hover::after{ transform:scaleX(1); }
+    .btn{ transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, background-color .2s ease; }
+    .btn:hover{ transform:translateY(-1px) scale(1.02); }
+    .btn:active{ transform:translateY(0) scale(.985); transition-duration:.08s; }
+    .card{ transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 1px 2px rgba(42,32,24,.05), 0 18px 44px -16px rgba(42,32,24,.26); }
+    .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(138,90,40,.28),transparent); }
+    :focus-visible{ outline:none; box-shadow:0 0 0 2px #f4ece0, 0 0 0 4px rgba(215,168,50,.85); border-radius:inherit; }
+
+    /* scroll reveal */
+    .reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in{ opacity:1; transform:none; }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .reveal{ opacity:1; transform:none; transition:none; }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-ink antialiased selection:bg-gold/30 selection:text-ink">
+
+  <!-- ================= SHARED LOGO MARK ================= -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true">
+    <defs>
+      <radialGradient id="nSun" cx="50%" cy="28%" r="78%">
+        <stop offset="0%" stop-color="#f2d178"/><stop offset="42%" stop-color="#e0b23f"/><stop offset="100%" stop-color="#cf9d28"/>
+      </radialGradient>
+      <linearGradient id="nBase" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#efdcc0"/><stop offset="100%" stop-color="#ffffff"/>
+      </linearGradient>
+      <linearGradient id="nWave" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#8a5a28"/><stop offset="50%" stop-color="#6e4620"/><stop offset="100%" stop-color="#9a6a30"/>
+      </linearGradient>
+      <clipPath id="nDisc"><circle cx="50" cy="50" r="48"/></clipPath>
+      <symbol id="nile-mark" viewBox="0 0 100 100">
+        <g clip-path="url(#nDisc)">
+          <rect x="0" y="0" width="100" height="100" fill="url(#nSun)"/>
+          <path d="M-2,58 C12,47 24,47 38,56 C50,64 60,64 72,55 C84,48 94,50 102,54 L102,102 L-2,102 Z" fill="url(#nBase)"/>
+          <path d="M-2,58 C12,47 24,47 38,56 C50,64 60,64 72,55 C84,48 94,50 102,54" fill="none" stroke="url(#nWave)" stroke-width="3.4" stroke-linecap="round"/>
+        </g>
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#2a2018" stroke-opacity="0.10" stroke-width="1"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ================= AMBIENT BACKGROUND ================= -->
+  <div class="pointer-events-none fixed inset-0 z-0">
+    <div class="absolute -top-40 left-1/2 h-[30rem] w-[54rem] -translate-x-1/2" style="background:radial-gradient(ellipse at center, rgba(215,168,50,.30), transparent 70%); filter:blur(100px);"></div>
+    <div class="absolute inset-x-0 bottom-0 h-56" style="background:linear-gradient(0deg,#efe3d0,transparent);"></div>
+  </div>
+
+  <!-- ================= NAV ================= -->
+  <header class="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-line/80 bg-cream/70 px-4 py-3 backdrop-blur-xl sm:px-6">
+      <a href="#top" class="flex items-center gap-2.5" aria-label="Nile Productivity home">
+        <svg class="h-9 w-9 drop-shadow-[0_2px_8px_rgba(184,141,31,.35)]"><use href="#nile-mark"/></svg>
+        <span class="text-lg font-semibold tracking-tight font-display">Nile</span>
+      </a>
+      <div class="hidden items-center gap-8 text-sm text-muted md:flex">
+        <a href="#work" class="nav-link transition-colors hover:text-ink">Work</a>
+        <a href="#services" class="nav-link transition-colors hover:text-ink">Services</a>
+        <a href="#about" class="nav-link transition-colors hover:text-ink">About</a>
+      </div>
+      <a href="#contact" class="btn cursor-pointer rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-cream font-sans hover:shadow-lift">
+        Get in touch
+      </a>
+    </nav>
+  </header>
+
+  <main id="top" class="relative z-10">
+
+    <!-- ================= HERO ================= -->
+    <section class="relative px-4 pt-32 pb-16 sm:pt-44 sm:pb-24" aria-label="Nile Productivity">
+      <div class="mx-auto max-w-3xl text-center">
+        <svg class="mx-auto h-24 w-24 drop-shadow-[0_10px_30px_rgba(184,141,31,.35)] sm:h-28 sm:w-28"><use href="#nile-mark"/></svg>
+        <div class="mt-7 flex items-center justify-center gap-3">
+          <h1 class="font-display font-semibold leading-none" style="font-size:clamp(2.6rem,7vw,4.5rem); letter-spacing:-.02em;">Nile</h1>
+          <span class="mt-2 h-8 w-px bg-line sm:h-10"></span>
+          <span class="wordmark-caps mt-2 text-xs text-muted sm:text-sm">Productivity</span>
+        </div>
+        <p class="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-ink2 sm:text-xl">
+          We design and build <span class="font-medium text-ink">polished mobile apps</span> — our own products, and software for the people we partner with.
+        </p>
+        <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="#contact" class="btn w-full rounded-xl bg-gold px-6 py-3 text-center text-sm font-semibold text-ink shadow-gold hover:bg-gold-bright sm:w-auto">
+            Start a project
+          </a>
+          <a href="#work" class="btn w-full rounded-xl border border-line bg-paper px-6 py-3 text-center text-sm font-semibold text-ink hover:border-gold sm:w-auto">
+            See our work
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= POSITIONING STRIP ================= -->
+    <section class="relative px-4 pb-6">
+      <div class="mx-auto max-w-5xl">
+        <div class="reveal grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+          <div class="bg-cream/60 px-6 py-7 text-center">
+            <p class="font-display text-3xl font-semibold text-ink">iOS &amp; Android</p>
+            <p class="mt-1.5 text-sm text-muted">Native-quality apps for every device</p>
+          </div>
+          <div class="bg-cream/60 px-6 py-7 text-center">
+            <p class="font-display text-3xl font-semibold text-ink">Design → Ship</p>
+            <p class="mt-1.5 text-sm text-muted">From first sketch to the App Store</p>
+          </div>
+          <div class="bg-cream/60 px-6 py-7 text-center">
+            <p class="font-display text-3xl font-semibold text-ink">Products &amp; SaaS</p>
+            <p class="mt-1.5 text-sm text-muted">Our own apps, and software for clients</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK / PROJECTS ================= -->
+    <section id="work" class="relative px-4 py-20 md:py-28">
+      <div class="mx-auto max-w-5xl">
+        <div class="reveal mb-12 text-center">
+          <p class="eyebrow">Our work</p>
+          <h2 class="mt-3 font-display font-semibold" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.02em;">Products we're building</h2>
+          <p class="mx-auto mt-3 max-w-lg text-muted">A studio building its own apps — with more on the way.</p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- Lynal -->
+          <article class="card reveal overflow-hidden rounded-2xl border border-line bg-paper shadow-lift">
+            <div class="relative h-44 overflow-hidden" style="background:radial-gradient(120% 120% at 50% 0%, #1b2540 0%, #0e0d14 60%);">
+              <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 20%, rgba(58,122,184,.35), transparent 60%);"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="font-display text-3xl font-semibold text-[#e8e8f0]">Lynal</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2">
+                <span class="rounded-full bg-gold/15 px-2.5 py-0.5 text-xs font-semibold text-bronze">Live</span>
+                <span class="text-xs text-muted">Health &amp; self-tracking</span>
+              </div>
+              <h3 class="mt-3 font-display text-xl font-semibold text-ink">Lynal — Life Analytics</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">Turns your day into a single Life Score across six pillars, with an AI analyst that tells you what to focus on next.</p>
+              <a href="https://lynal.app" target="_blank" rel="noopener" class="nav-link mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-bronze hover:text-ink">
+                Visit lynal.app <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Stealth project -->
+          <article class="card reveal overflow-hidden rounded-2xl border border-line bg-paper shadow-lift">
+            <div class="relative h-44 overflow-hidden" style="background:radial-gradient(120% 120% at 50% 0%, #3a2e22 0%, #2a2018 60%);">
+              <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 20%, rgba(215,168,50,.28), transparent 60%);"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="h-16 w-16 opacity-90" style="filter:grayscale(.15) blur(.3px);"><use href="#nile-mark"/></svg>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2">
+                <span class="rounded-full bg-ink/8 px-2.5 py-0.5 text-xs font-semibold text-ink2">In development</span>
+                <span class="text-xs text-muted">Mobile</span>
+              </div>
+              <h3 class="mt-3 font-display text-xl font-semibold text-ink">To be revealed soon</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">A new mobile app is in the works. We're keeping this one under wraps for now — check back shortly.</p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-muted">Coming soon</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="relative px-4 py-20 md:py-28">
+      <div class="mx-auto max-w-5xl">
+        <div class="reveal mb-12 text-center">
+          <p class="eyebrow">What we do</p>
+          <h2 class="mt-3 font-display font-semibold" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.02em;">Software, start to finish</h2>
+          <p class="mx-auto mt-3 max-w-lg text-muted">We take products from idea to a shipped, maintained app — and we do the same for clients.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Mobile app development -->
+          <div class="card reveal rounded-2xl border border-line bg-paper p-6 shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 text-bronze"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-semibold text-ink">Mobile app development</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Native iOS &amp; Android apps designed and built in-house — fast, polished, and made to ship.</p>
+          </div>
+
+          <!-- SaaS (future) -->
+          <div class="card reveal rounded-2xl border border-line bg-paper p-6 shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 text-bronze"><path d="M6.5 15a3.5 3.5 0 0 1 .4-6.98A5 5 0 0 1 17 8.5a3.5 3.5 0 0 1 .1 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12v6M9.5 15.5 12 18l2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="mt-4 flex items-center gap-2">
+              <h3 class="font-display text-lg font-semibold text-ink">SaaS platforms</h3>
+              <span class="rounded-full bg-tan/50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-bronze">Soon</span>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Web-based software and subscription products are on our roadmap as Nile grows beyond mobile.</p>
+          </div>
+
+          <!-- Client software -->
+          <div class="card reveal rounded-2xl border border-line bg-paper p-6 shadow-lift">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15">
+              <svg viewBox="0 0 24 24" class="h-6 w-6 text-bronze"><path d="M9 8 5 12l4 4M15 8l4 4-4 4M13 5l-2 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="mt-4 font-display text-lg font-semibold text-ink">Software for clients</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Have an idea? We partner with founders and businesses to design and build custom apps end to end.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="relative px-4 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="reveal">
+          <p class="eyebrow">About Nile</p>
+          <h2 class="mt-3 font-display font-semibold" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.02em;">A studio for the calm and the useful</h2>
+          <p class="mx-auto mt-5 text-lg leading-relaxed text-ink2">
+            Nile Productivity is a mobile app development studio. We build our own products — like Lynal — and craft software for the people we work with. The name is a reminder: like the river, good software should feel steady, essential, and quietly powerful.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT (reverse / espresso) ================= -->
+    <section id="contact" class="relative px-4 pb-24 pt-6 md:pb-32">
+      <div class="mx-auto max-w-5xl">
+        <div class="reveal relative overflow-hidden rounded-3xl bg-ink px-6 py-16 text-center sm:px-12 sm:py-20">
+          <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(120% 90% at 50% 0%, rgba(215,168,50,.22), transparent 60%);"></div>
+          <div class="relative">
+            <svg class="mx-auto h-16 w-16"><use href="#nile-mark"/></svg>
+            <h2 class="mt-6 font-display font-semibold text-cream" style="font-size:clamp(1.8rem,4vw,2.6rem); letter-spacing:-.02em;">Have a project in mind?</h2>
+            <p class="mx-auto mt-3 max-w-md text-tan/90">Tell us what you're building. We'll help you design it, build it, and ship it.</p>
+            <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href="mailto:hello@nileproductivity.com" class="btn w-full rounded-xl bg-gold px-6 py-3 text-center text-sm font-semibold text-ink shadow-gold hover:bg-gold-bright sm:w-auto">
+                hello@nileproductivity.com
+              </a>
+              <a href="https://lynal.app" target="_blank" rel="noopener" class="btn w-full rounded-xl border border-white/15 px-6 py-3 text-center text-sm font-semibold text-cream hover:border-gold/60 sm:w-auto">
+                Explore Lynal
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative z-10 px-4 py-12">
+    <div class="mx-auto max-w-6xl">
+      <div class="rule mb-10"></div>
+      <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+        <div class="flex items-center gap-2.5">
+          <svg class="h-8 w-8"><use href="#nile-mark"/></svg>
+          <span class="font-display font-semibold text-ink">Nile</span>
+          <span class="text-sm text-muted">· Productivity</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted">
+          <a href="privacy.html" class="nav-link transition-colors hover:text-ink">Privacy</a>
+          <a href="terms.html" class="nav-link transition-colors hover:text-ink">Terms</a>
+          <a href="mailto:hello@nileproductivity.com" class="nav-link transition-colors hover:text-ink">hello@nileproductivity.com</a>
+        </div>
+        <p class="text-sm text-muted">© 2026 Nile Productivity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SCROLL REVEAL ================= -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
