@@ -22,7 +22,7 @@
   <!-- ============ FONTS ============ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- ============ TAILWIND ============ -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -80,6 +80,9 @@
     .card:hover{ transform:translateY(-3px); box-shadow:0 18px 48px -20px rgba(80,60,30,0.42); }
     .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(107,74,28,.28),transparent); }
     :focus-visible{ outline:none; box-shadow:0 0 0 2px #f4ece0, 0 0 0 4px rgba(215,168,50,.85); border-radius:inherit; }
+
+    /* Lynal brand type (for the project tile, matching lynal.app) */
+    .lynal-type{ font-family:'Outfit','Hanken Grotesk',system-ui,sans-serif; }
 
     /* scroll reveal */
     .reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
@@ -215,10 +218,31 @@
         <div class="grid gap-6 md:grid-cols-2">
           <!-- Lynal -->
           <article class="card reveal overflow-hidden rounded-[20px] border border-line bg-paper shadow-lift">
-            <div class="relative h-44 overflow-hidden" style="background:radial-gradient(120% 120% at 50% 0%, #1b2540 0%, #0e0d14 60%);">
-              <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 20%, rgba(58,122,184,.35), transparent 60%);"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display text-3xl font-medium text-[#e8e8f0]">Lynal</span>
+            <div class="relative h-48 overflow-hidden" style="background:radial-gradient(130% 110% at 50% -10%, #15131f 0%, #0e0d14 52%, #090810 100%);">
+              <!-- faint grid, as on lynal.app -->
+              <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse 75% 60% at 50% 0%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 75% 60% at 50% 0%,#000 30%,transparent 100%);"></div>
+              <!-- blue score-ring glow -->
+              <div class="absolute -top-14 left-1/2 h-40 w-72 -translate-x-1/2" style="background:radial-gradient(ellipse at center, rgba(58,122,184,.45), transparent 70%); filter:blur(38px);"></div>
+              <div class="relative flex h-full flex-col items-center justify-center gap-3.5 px-6">
+                <div class="flex items-center gap-2.5">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-[11px] border border-[#5aa6e6]/25 bg-[#15141e]" style="box-shadow:0 0 0 1px rgba(90,166,230,.10), 0 6px 18px -6px rgba(58,122,184,.5);">
+                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none">
+                      <defs><linearGradient id="lyGem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5aa6e6"/><stop offset="1" stop-color="#9a7ac8"/></linearGradient></defs>
+                      <path d="M12 2.6 20 7v10l-8 4.4L4 17V7z" stroke="url(#lyGem)" stroke-width="1.7" stroke-linejoin="round"/>
+                      <path d="M12 2.6V12M12 12l8-5M12 12l-8-5" stroke="url(#lyGem)" stroke-width="1.4" stroke-linejoin="round" opacity=".85"/>
+                    </svg>
+                  </span>
+                  <span class="lynal-type text-2xl font-semibold text-[#e8e8f0]">Lynal</span>
+                </div>
+                <p class="lynal-type text-sm text-[#8c97a6]">One score for your whole day.</p>
+                <div class="flex items-center gap-2.5">
+                  <span class="h-2 w-2 rounded-full" style="background:#3a7ab8;" title="Discipline"></span>
+                  <span class="h-2 w-2 rounded-full" style="background:#3a7a4a;" title="Physical"></span>
+                  <span class="h-2 w-2 rounded-full" style="background:#9a7ac8;" title="Mental"></span>
+                  <span class="h-2 w-2 rounded-full" style="background:#c8b86a;" title="Financial"></span>
+                  <span class="h-2 w-2 rounded-full" style="background:#b8862e;" title="Goals"></span>
+                  <span class="h-2 w-2 rounded-full" style="background:#c85a7a;" title="Social"></span>
+                </div>
               </div>
             </div>
             <div class="p-6">
@@ -304,9 +328,9 @@
       <div class="mx-auto max-w-3xl text-center">
         <div class="reveal">
           <p class="eyebrow">About Nile</p>
-          <h2 class="mt-3 font-display font-medium" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.01em;">A studio for the calm and the useful</h2>
+          <h2 class="mt-3 font-display font-medium" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.01em;">From a source, everything flows</h2>
           <p class="mx-auto mt-5 text-lg leading-relaxed text-body">
-            Nile Productivity is a mobile app development studio. We build our own products — like Lynal — and craft software for the people we work with. The name is a reminder: like the river, good software should feel steady, essential, and quietly powerful.
+            Nile Productivity is a mobile app development studio. We build our own products — like Lynal — and craft software for the people we work with. Our name is the idea behind the work: a river begins at a source, a single starting point, and from there it streams steady and unstoppable toward good. Every product we make starts the same way — one clear spring, carried all the way downstream to the people it's for.
           </p>
         </div>
       </div>
