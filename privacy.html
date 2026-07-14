@@ -13,35 +13,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: { extend: {
-        fontFamily: { display: ['Fraunces','Georgia','serif'], sans: ['Inter','system-ui','sans-serif'] },
+        fontFamily: { display: ['Newsreader','Georgia','serif'], sans: ['"Hanken Grotesk"','system-ui','sans-serif'] },
         colors: {
-          cream:'#f4ece0', sand:'#efe4d2', paper:'#ffffff', tan:'#e3cfa9',
-          gold:{DEFAULT:'#d7a832',bright:'#e9c565',deep:'#b98d1f'}, bronze:'#8a5a28',
-          ink:'#2a2018', ink2:'#4a3f31', muted:'#6f6151', line:'#e6dac6',
+          cream:'#f4ece0', sheet:'#efe7da', panel:'#fbf7f0', paper:'#ffffff', blush:'#fbf4ee', tan:'#e3cfa9',
+          gold:{DEFAULT:'#d7a832',mid:'#e3c470',pale:'#edd9a8'}, bronze:{DEFAULT:'#8a6b3f',deep:'#6b4a1c'},
+          ink:'#2a2018', body:'#6b5f4d', muted:'#8a7a5f', eyebrow:'#a08a63', line:'#e6dcc9',
+          creamtext:'#f6f0e4', goldcaps:'#d8b988',
         },
+        boxShadow: { lift: '0 18px 40px -24px rgba(80,60,30,0.3)' },
       } },
     }
   </script>
 
   <style>
     html, body{ background:#f4ece0; overflow-x:clip; }
-    body{ background-image: radial-gradient(120% 90% at 50% -8%, #fbf5ea 0%, #f4ece0 46%, #efe3d0 100%); background-attachment: fixed; -webkit-font-smoothing: antialiased; }
-    .eyebrow{ font-family:'Inter',sans-serif; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.2em; color:#b98d1f; }
-    .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(138,90,40,.28),transparent); }
+    body{ background-image: radial-gradient(120% 90% at 50% -8%, #fbf7f0 0%, #f4ece0 46%, #efe7da 100%); background-attachment: fixed; -webkit-font-smoothing: antialiased; }
+    .eyebrow{ font-family:'Hanken Grotesk',sans-serif; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.32em; color:#a08a63; }
+    .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(107,74,28,.28),transparent); }
     .nav-link{ position:relative; }
-    .legal h2{ margin-top:2.75rem; font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; color:#2a2018; letter-spacing:-.01em; }
-    .legal p{ margin-top:.9rem; line-height:1.75; color:#4a3f31; }
-    .legal ul{ margin-top:.9rem; padding-left:1.2rem; list-style:disc; color:#4a3f31; line-height:1.75; }
+    .legal h2{ margin-top:2.75rem; font-family:'Newsreader',serif; font-weight:500; font-size:1.35rem; color:#2a2018; letter-spacing:-.01em; }
+    .legal p{ margin-top:.9rem; line-height:1.75; color:#6b5f4d; }
+    .legal ul{ margin-top:.9rem; padding-left:1.2rem; list-style:disc; color:#6b5f4d; line-height:1.75; }
     .legal li{ margin-top:.4rem; }
     .legal li::marker{ color:#d7a832; }
     .legal strong{ color:#2a2018; font-weight:600; }
-    .legal a{ color:#8a5a28; text-decoration:underline; text-underline-offset:2px; text-decoration-color:rgba(138,90,40,.45); }
+    .legal a{ color:#8a6b3f; text-decoration:underline; text-underline-offset:2px; text-decoration-color:rgba(138,107,63,.45); }
     .legal a:hover{ color:#2a2018; }
     :focus-visible{ outline:none; box-shadow:0 0 0 2px #f4ece0, 0 0 0 4px rgba(215,168,50,.85); border-radius:inherit; }
     @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
@@ -51,17 +53,18 @@
 <body class="font-sans text-ink antialiased selection:bg-gold/30 selection:text-ink">
 
   <svg width="0" height="0" class="absolute" aria-hidden="true"><defs>
-    <radialGradient id="nSun" cx="50%" cy="28%" r="78%"><stop offset="0%" stop-color="#f2d178"/><stop offset="42%" stop-color="#e0b23f"/><stop offset="100%" stop-color="#cf9d28"/></radialGradient>
-    <linearGradient id="nBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#efdcc0"/><stop offset="100%" stop-color="#ffffff"/></linearGradient>
-    <linearGradient id="nWave" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8a5a28"/><stop offset="50%" stop-color="#6e4620"/><stop offset="100%" stop-color="#9a6a30"/></linearGradient>
-    <clipPath id="nDisc"><circle cx="50" cy="50" r="48"/></clipPath>
-    <symbol id="nile-mark" viewBox="0 0 100 100">
+    <linearGradient id="nGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7a832"/><stop offset="0.5" stop-color="#e3c470"/><stop offset="1" stop-color="#edd9a8"/></linearGradient>
+    <linearGradient id="nBase" x1="0" y1="0.42" x2="0" y2="1"><stop offset="0" stop-color="#fbf4ee"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+    <linearGradient id="nLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6b4a1c"/><stop offset="1" stop-color="#2a2018"/></linearGradient>
+    <clipPath id="nDisc"><circle cx="60" cy="60" r="56"/></clipPath>
+    <symbol id="nile-mark" viewBox="0 0 120 120">
       <g clip-path="url(#nDisc)">
-        <rect x="0" y="0" width="100" height="100" fill="url(#nSun)"/>
-        <path d="M-2,58 C12,47 24,47 38,56 C50,64 60,64 72,55 C84,48 94,50 102,54 L102,102 L-2,102 Z" fill="url(#nBase)"/>
-        <path d="M-2,58 C12,47 24,47 38,56 C50,64 60,64 72,55 C84,48 94,50 102,54" fill="none" stroke="url(#nWave)" stroke-width="3.4" stroke-linecap="round"/>
+        <rect x="0" y="0" width="120" height="120" fill="#ffffff"/>
+        <path d="M0,70 C30,52 44,52 60,68 C76,84 90,84 120,66 L120,120 L0,120 Z" fill="url(#nBase)"/>
+        <path d="M0,70 C30,52 44,52 60,68 C76,84 90,84 120,66 L120,0 L0,0 Z" fill="url(#nGold)"/>
+        <path d="M0,70 C30,52 44,52 60,68 C76,84 90,84 120,66" stroke="url(#nLine)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
       </g>
-      <circle cx="50" cy="50" r="48" fill="none" stroke="#2a2018" stroke-opacity="0.10" stroke-width="1"/>
+      <circle cx="60" cy="60" r="56" fill="none" stroke="#e6dcc9" stroke-width="1.5"/>
     </symbol>
   </defs></svg>
 
@@ -69,21 +72,21 @@
     <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-line/80 bg-cream/70 px-4 py-3 backdrop-blur-xl sm:px-6">
       <a href="index.html" class="flex items-center gap-2.5" aria-label="Nile Productivity home">
         <svg class="h-9 w-9"><use href="#nile-mark"/></svg>
-        <span class="text-lg font-semibold tracking-tight font-display">Nile</span>
+        <span class="font-display text-xl font-medium" style="letter-spacing:-.02em;">Nile</span>
       </a>
       <a href="index.html#contact" class="cursor-pointer rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-cream">Get in touch</a>
     </nav>
   </header>
 
   <main class="relative z-10 mx-auto max-w-3xl px-4 pt-32 pb-24 sm:pt-40 sm:pb-32">
-    <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-ink">← Back to Nile</a>
+    <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-body transition-colors hover:text-ink">← Back to Nile</a>
 
     <p class="eyebrow mt-8">Legal</p>
-    <h1 class="mt-3 font-display font-semibold" style="font-size:clamp(2rem,4vw,2.75rem); letter-spacing:-.02em;">Privacy Policy</h1>
+    <h1 class="mt-3 font-display font-medium" style="font-size:clamp(2rem,4vw,2.75rem); letter-spacing:-.01em;">Privacy Policy</h1>
     <p class="mt-3 text-sm text-muted">Last updated: July 13, 2026</p>
 
     <div class="legal mt-2">
-      <p class="!mt-8 text-lg !leading-relaxed !text-ink2">This Privacy Policy describes how Nile Productivity ("Nile," "we," "us," or "our") collects, uses, and shares information when you use this website, contact us, or use apps we publish (together, the "Service"). Individual apps we release may have their own privacy policies, which govern those apps specifically.</p>
+      <p class="!mt-8 text-lg !leading-relaxed">This Privacy Policy describes how Nile Productivity ("Nile," "we," "us," or "our") collects, uses, and shares information when you use this website, contact us, or use apps we publish (together, the "Service"). Individual apps we release may have their own privacy policies, which govern those apps specifically.</p>
 
       <h2>1. Information we collect</h2>
       <p><strong>Information you provide.</strong> When you contact us — for example by email or an inquiry form — we collect your name, email address, and anything you choose to include in your message.</p>
@@ -136,10 +139,10 @@
       <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
         <div class="flex items-center gap-2.5">
           <svg class="h-8 w-8"><use href="#nile-mark"/></svg>
-          <span class="font-display font-semibold text-ink">Nile</span>
+          <span class="font-display text-lg font-medium text-ink" style="letter-spacing:-.02em;">Nile</span>
           <span class="text-sm text-muted">· Productivity</span>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted">
+        <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-body">
           <a href="privacy.html" class="nav-link text-ink transition-colors hover:text-ink">Privacy</a>
           <a href="terms.html" class="nav-link transition-colors hover:text-ink">Terms</a>
           <a href="mailto:hello@nileproductivity.com" class="nav-link transition-colors hover:text-ink">Contact</a>
