@@ -22,7 +22,7 @@
   <!-- ============ FONTS ============ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- ============ TAILWIND ============ -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -32,28 +32,14 @@
         extend: {
           fontFamily: {
             display: ['Newsreader', 'Georgia', 'serif'],
-            sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
           },
           colors: {
-            cream: '#f4ece0',   // palette cream — page background
-            sheet: '#efe7da',   // deeper cream wash
-            panel: '#fbf7f0',   // raised panel (1a card)
-            paper: '#ffffff',   // white lockup surface
-            blush: '#fbf4ee',   // base-fade blush
-            tan:   '#e3cfa9',   // palette blush/tan
+            cream: '#f4ece0', sand: '#efe4d2', panel: '#fbf4ee', paper: '#ffffff', tan: '#e3cfa9',
             gold:  { DEFAULT:'#d7a832', mid:'#e3c470', pale:'#edd9a8' },
-            bronze:{ DEFAULT:'#8a6b3f', deep:'#6b4a1c' },  // caps accent · waterline
-            ink:   '#2a2018',   // espresso — dark surfaces + headings
-            body:  '#6b5f4d',   // body copy (design-sheet body)
-            muted: '#8a7a5f',   // quiet labels
-            eyebrow:'#a08a63',  // eyebrow caps
-            line:  '#e6dcc9',   // hairline border
-            creamtext:'#f6f0e4',// text on espresso
-            goldcaps:'#d8b988', // caps on espresso
-          },
-          boxShadow: {
-            lift: '0 18px 40px -24px rgba(80,60,30,0.3)',
-            gold: '0 8px 24px -8px rgba(215,168,50,.5)',
+            bronze:{ DEFAULT:'#8a6a1c', deep:'#6b4a1c' },
+            ink:   '#2a2018', ink2: '#4a3f31', body: '#6b5f4d', muted: '#8a7a5f',
+            eyebrow:'#a07e2c', line: '#e6dcc9',
           },
         },
       },
@@ -61,50 +47,48 @@
   </script>
 
   <style>
-    :root{ --ease: cubic-bezier(.16,1,.3,1); }
+    :root{ --ease: cubic-bezier(.22,.9,.25,1); }
     html, body{ background:#f4ece0; overflow-x:clip; }
-    body{
-      background-image: radial-gradient(120% 90% at 50% -8%, #fbf7f0 0%, #f4ece0 46%, #efe7da 100%);
-      background-attachment: fixed;
-      -webkit-font-smoothing: antialiased;
-    }
-    .eyebrow{ font-family:'Hanken Grotesk',sans-serif; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.32em; color:#a08a63; }
-    .wordmark-caps{ font-family:'Hanken Grotesk',sans-serif; text-transform:uppercase; letter-spacing:.34em; font-weight:600; color:#8a6b3f; }
-    .nav-link{ position:relative; }
-    .nav-link::after{ content:""; position:absolute; left:0; bottom:-4px; height:1.5px; width:100%; background:linear-gradient(90deg,#d7a832,#6b4a1c); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
-    .nav-link:hover::after{ transform:scaleX(1); }
-    .btn{ transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, background-color .2s ease; }
-    .btn:hover{ transform:translateY(-1px) scale(1.02); }
-    .btn:active{ transform:translateY(0) scale(.985); transition-duration:.08s; }
-    .card{ transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
-    .card:hover{ transform:translateY(-3px); box-shadow:0 18px 48px -20px rgba(80,60,30,0.42); }
-    .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(107,74,28,.28),transparent); }
-    :focus-visible{ outline:none; box-shadow:0 0 0 2px #f4ece0, 0 0 0 4px rgba(215,168,50,.85); border-radius:inherit; }
+    body{ -webkit-font-smoothing:antialiased; }
+    section[id]{ scroll-margin-top:88px; }
+    a{ color:#8a6a1c; }
+    a:hover{ color:#5f4715; }
 
-    /* Lynal brand type (for the project tile, matching lynal.app) */
-    .lynal-type{ font-family:'Outfit','Hanken Grotesk',system-ui,sans-serif; }
+    .btn{ transition:transform .2s cubic-bezier(.2,.9,.2,1), box-shadow .2s, background .2s, color .2s, border-color .2s; cursor:pointer; }
+    .eyebrow{ font-weight:600; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#a07e2c; }
 
-    /* scroll reveal */
-    .reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
-    .reveal.in{ opacity:1; transform:none; }
+    /* scroll reveal (fade + rise) */
+    [data-reveal]{ opacity:0; transform:translateY(32px); transition:opacity .9s var(--ease), transform .9s var(--ease); will-change:opacity,transform; }
+    [data-reveal].in{ opacity:1; transform:none; }
+
+    /* shimmering keyword */
+    .shimmer{ background:linear-gradient(90deg,#d7a832,#e3c470,#d7a832); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; animation:shimmer 5s linear infinite; }
+    @keyframes shimmer{ to{ background-position:220% 0; } }
+    @keyframes floaty{ 0%,100%{ transform:translateY(-6px); } 50%{ transform:translateY(6px); } }
+    .floaty{ animation:floaty 7s ease-in-out infinite; }
+
+    /* the river */
+    #river{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; overflow:visible; }
+
+    /* Lynal preview keeps its own (lynal.app) type */
+    .lynal-type{ font-family:'Outfit','Manrope',system-ui,sans-serif; }
 
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
-      .reveal{ opacity:1; transform:none; transition:none; }
+      [data-reveal]{ opacity:1; transform:none; transition:none; }
+      .shimmer{ animation:none; }
+      .floaty{ animation:none; }
     }
   </style>
 </head>
 
 <body class="font-sans text-ink antialiased selection:bg-gold/30 selection:text-ink">
 
-  <!-- ================= SHARED LOGO MARK (Turn 1 · final) ================= -->
+  <!-- ================= SHARED LOGO MARK ================= -->
   <svg width="0" height="0" class="absolute" aria-hidden="true">
     <defs>
       <linearGradient id="nGold" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#d7a832"/><stop offset="0.5" stop-color="#e3c470"/><stop offset="1" stop-color="#edd9a8"/>
-      </linearGradient>
-      <linearGradient id="nGoldRev" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#e0b840"/><stop offset="0.5" stop-color="#ecd48c"/><stop offset="1" stop-color="#f2e3b4"/>
       </linearGradient>
       <linearGradient id="nBase" x1="0" y1="0.42" x2="0" y2="1">
         <stop offset="0" stop-color="#fbf4ee"/><stop offset="1" stop-color="#ffffff"/>
@@ -113,7 +97,6 @@
         <stop offset="0" stop-color="#6b4a1c"/><stop offset="1" stop-color="#2a2018"/>
       </linearGradient>
       <clipPath id="nDisc"><circle cx="60" cy="60" r="56"/></clipPath>
-      <!-- primary mark: white disc · gold dune above · blush base fade · bronze waterline · cream ring -->
       <symbol id="nile-mark" viewBox="0 0 120 120">
         <g clip-path="url(#nDisc)">
           <rect x="0" y="0" width="120" height="120" fill="#ffffff"/>
@@ -123,105 +106,94 @@
         </g>
         <circle cx="60" cy="60" r="56" fill="none" stroke="#e6dcc9" stroke-width="1.5"/>
       </symbol>
-      <!-- reverse mark: brighter golds + soft white ring, for espresso surfaces -->
-      <symbol id="nile-mark-rev" viewBox="0 0 120 120">
-        <g clip-path="url(#nDisc)">
-          <rect x="0" y="0" width="120" height="120" fill="#ffffff"/>
-          <path d="M0,70 C30,52 44,52 60,68 C76,84 90,84 120,66 L120,120 L0,120 Z" fill="url(#nBase)"/>
-          <path d="M0,70 C30,52 44,52 60,68 C76,84 90,84 120,66 L120,0 L0,0 Z" fill="url(#nGoldRev)"/>
-          <path d="M0,70 C30,52 44,52 60,68 C76,84 90,84 120,66" stroke="url(#nLine)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        </g>
-        <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      </symbol>
     </defs>
   </svg>
 
-  <!-- ================= AMBIENT BACKGROUND ================= -->
-  <div class="pointer-events-none fixed inset-0 z-0">
-    <div class="absolute -top-40 left-1/2 h-[30rem] w-[54rem] -translate-x-1/2" style="background:radial-gradient(ellipse at center, rgba(215,168,50,.24), transparent 70%); filter:blur(100px);"></div>
-    <div class="absolute inset-x-0 bottom-0 h-56" style="background:linear-gradient(0deg,#efe7da,transparent);"></div>
-  </div>
-
   <!-- ================= NAV ================= -->
-  <header class="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-    <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-line/80 bg-cream/70 px-4 py-3 backdrop-blur-xl sm:px-6">
-      <a href="#top" class="flex items-center gap-2.5" aria-label="Nile Productivity home">
-        <svg class="h-9 w-9"><use href="#nile-mark"/></svg>
-        <span class="font-display text-xl font-medium" style="letter-spacing:-.02em;">Nile</span>
-      </a>
-      <div class="hidden items-center gap-8 text-sm text-body md:flex">
-        <a href="#work" class="nav-link transition-colors hover:text-ink">Work</a>
-        <a href="#services" class="nav-link transition-colors hover:text-ink">Services</a>
-        <a href="#about" class="nav-link transition-colors hover:text-ink">About</a>
+  <header class="sticky top-0 z-30 border-b border-bronze-deep/10 bg-cream/70 backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4 sm:px-8">
+      <a href="#top" class="font-display text-2xl font-semibold text-ink" aria-label="Nile Productivity home">Nile</a>
+      <div class="ml-2 hidden items-center gap-6 text-sm font-semibold text-ink/60 sm:flex">
+        <a href="#work" class="transition-colors hover:text-ink">Work</a>
+        <a href="#services" class="transition-colors hover:text-ink">Services</a>
+        <a href="#about" class="transition-colors hover:text-ink">About</a>
       </div>
-      <a href="#contact" class="btn cursor-pointer rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-cream font-sans hover:shadow-lift">
-        Get in touch
-      </a>
+      <a href="#contact" class="btn ml-auto rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-cream hover:-translate-y-0.5 hover:shadow-[0_10px_22px_-8px_rgba(42,32,24,.5)]">Get in touch</a>
     </nav>
   </header>
 
-  <main id="top" class="relative z-10">
+  <main id="top">
+    <!-- flow column: the river runs behind everything here -->
+    <div id="flow" class="relative mx-auto max-w-6xl px-6 sm:px-8">
 
-    <!-- ================= HERO — 1a horizontal lockup ================= -->
-    <section class="relative px-4 pt-32 pb-16 sm:pt-44 sm:pb-24" aria-label="Nile Productivity">
-      <div class="mx-auto max-w-3xl">
-        <div class="flex flex-col items-center justify-center gap-7 sm:flex-row sm:gap-9">
-          <svg class="h-28 w-28 shrink-0 sm:h-32 sm:w-32" style="filter:drop-shadow(0 12px 28px rgba(138,107,63,.28));"><use href="#nile-mark"/></svg>
-          <div class="flex flex-col items-center sm:items-start">
-            <h1 class="font-display font-medium" style="font-size:clamp(3.25rem,8vw,4.5rem); line-height:.95; letter-spacing:-.02em;">Nile</h1>
-            <span class="wordmark-caps mt-2 text-[13px]">Productivity</span>
-          </div>
-        </div>
-        <p class="mx-auto mt-10 max-w-xl text-center text-lg leading-relaxed text-body sm:text-xl">
-          We design and build <span class="font-medium text-ink">polished mobile apps</span> — our own products, and software for the people we partner with.
-        </p>
-        <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="#contact" class="btn w-full rounded-xl bg-gold px-6 py-3 text-center text-sm font-semibold text-ink shadow-gold hover:bg-gold-mid sm:w-auto">
-            Start a project
-          </a>
-          <a href="#work" class="btn w-full rounded-xl border border-line bg-panel px-6 py-3 text-center text-sm font-semibold text-ink hover:border-gold sm:w-auto">
-            See our work
-          </a>
-        </div>
-      </div>
-    </section>
+      <!-- ===== THE RIVER ===== -->
+      <svg id="river" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="headGrad">
+            <stop offset="0" stop-color="#fdefb8" stop-opacity="1"/>
+            <stop offset="45%" stop-color="#e9c86a" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#e9c86a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path id="riverBase" d="" fill="none" stroke="#6b4a1c" stroke-opacity="0.22" stroke-width="3" stroke-linecap="round"/>
+        <path id="riverGlow" d="" fill="none" stroke="#e3c470" stroke-opacity="0.28" stroke-width="12" stroke-linecap="round"/>
+        <path id="riverLight" d="" fill="none" stroke="#e6c974" stroke-width="4.5" stroke-linecap="round"/>
+        <circle id="riverHalo" r="17" fill="url(#headGrad)" opacity="0"/>
+        <circle id="riverHead" r="4.5" fill="#fff6da" opacity="0"/>
+      </svg>
 
-    <!-- ================= POSITIONING STRIP ================= -->
-    <section class="relative px-4 pb-6">
-      <div class="mx-auto max-w-5xl">
-        <div class="reveal grid gap-px overflow-hidden rounded-[20px] border border-line bg-line sm:grid-cols-3">
-          <div class="bg-panel px-6 py-7 text-center">
-            <p class="font-display text-3xl font-medium text-ink">iOS &amp; Android</p>
-            <p class="mt-1.5 text-sm text-body">Native-quality apps for every device</p>
-          </div>
-          <div class="bg-panel px-6 py-7 text-center">
-            <p class="font-display text-3xl font-medium text-ink">Design → Ship</p>
-            <p class="mt-1.5 text-sm text-body">From first sketch to the App Store</p>
-          </div>
-          <div class="bg-panel px-6 py-7 text-center">
-            <p class="font-display text-3xl font-medium text-ink">Products &amp; SaaS</p>
-            <p class="mt-1.5 text-sm text-body">Our own apps, and software for clients</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- content sits above the river -->
+      <div class="relative z-10">
 
-    <!-- ================= WORK / PROJECTS ================= -->
-    <section id="work" class="relative px-4 py-20 md:py-28">
-      <div class="mx-auto max-w-5xl">
-        <div class="reveal mb-12 text-center">
-          <p class="eyebrow">Our work</p>
-          <h2 class="mt-3 font-display font-medium" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.01em;">Products we're building</h2>
-          <p class="mx-auto mt-3 max-w-lg text-body">A studio building its own apps — with more on the way.</p>
-        </div>
+        <!-- ===== HERO ===== -->
+        <section class="flex min-h-[86vh] flex-col items-center justify-center py-16 text-center sm:py-24">
+          <div data-reveal class="flex items-center gap-6 sm:gap-8">
+            <svg class="h-24 w-24 sm:h-32 sm:w-32" style="filter:drop-shadow(0 16px 30px rgba(107,74,28,.35));"><use href="#nile-mark"/></svg>
+            <div class="text-left">
+              <div class="font-display font-medium text-ink" style="font-size:clamp(3.4rem,9vw,4.6rem); line-height:.9; letter-spacing:-.01em;">Nile</div>
+              <div class="mt-2 font-sans font-semibold uppercase text-eyebrow" style="font-size:15px; letter-spacing:.44em;">Productivity</div>
+            </div>
+          </div>
 
-        <div class="grid gap-6 md:grid-cols-2">
-          <!-- Lynal -->
-          <article class="card reveal overflow-hidden rounded-[20px] border border-line bg-paper shadow-lift">
-            <div class="relative h-48 overflow-hidden" style="background:radial-gradient(130% 110% at 50% -10%, #15131f 0%, #0e0d14 52%, #090810 100%);">
-              <!-- faint grid, as on lynal.app -->
+          <p data-reveal style="transition-delay:.08s;" class="eyebrow mt-10 mb-2">Mobile app development · iOS &amp; Android</p>
+
+          <h1 data-reveal style="transition-delay:.16s; font-size:clamp(2.4rem,6vw,3.5rem); line-height:1.02; letter-spacing:-.015em;" class="max-w-3xl font-display font-medium text-ink">
+            From a source, everything <span class="shimmer" style="font-style:italic;">flows.</span>
+          </h1>
+
+          <p data-reveal style="transition-delay:.24s;" class="mt-6 mb-8 max-w-xl text-lg leading-relaxed text-ink/70">
+            We design and build polished mobile apps — our own products, and software for the people we partner with.
+          </p>
+
+          <div data-reveal style="transition-delay:.32s;" class="flex flex-col gap-3 sm:flex-row">
+            <a href="#contact" class="btn rounded-full bg-ink px-7 py-4 text-center text-[15px] font-semibold text-cream hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgba(42,32,24,.5)]">Start a project</a>
+            <a href="#work" class="btn rounded-full border border-bronze-deep/30 px-7 py-4 text-center text-[15px] font-semibold text-ink hover:bg-bronze-deep/[0.07]">See our work</a>
+          </div>
+
+          <p data-reveal style="transition-delay:.4s;" class="mt-16 text-xs font-medium uppercase tracking-[.16em] text-ink/40">Scroll · follow the current ↓</p>
+        </section>
+
+        <!-- ===== WORK ===== -->
+        <section id="work" class="flex flex-col items-start gap-10 py-16 sm:py-24">
+          <div data-reveal class="max-w-md">
+            <p class="eyebrow mb-2.5">Our work</p>
+            <h2 class="font-display font-medium text-ink" style="font-size:clamp(2rem,4.5vw,2.9rem); line-height:1.04; letter-spacing:-.01em;">Products we're building</h2>
+            <p class="mt-3.5 text-base leading-relaxed text-ink/70">A studio building its own apps — with more on the way.</p>
+          </div>
+
+          <!-- Lynal card (PRESERVED lynal.app-style tile) -->
+          <article data-reveal class="w-full self-start rounded-[22px] border border-bronze-deep/[0.12] bg-panel p-6 shadow-[0_24px_50px_-28px_rgba(107,74,28,.5)] sm:max-w-[480px]">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-[13px] font-sans text-lg font-extrabold text-[#5f4715]" style="background:linear-gradient(150deg,#d7a832,#edd9a8);">L</div>
+              <div>
+                <div class="font-sans text-[17px] font-bold text-ink">Lynal</div>
+                <div class="font-sans text-xs font-medium text-eyebrow">Live · Health &amp; self-tracking</div>
+              </div>
+            </div>
+
+            <!-- preserved dark Lynal preview (matches lynal.app) -->
+            <div class="relative mb-4 h-52 overflow-hidden rounded-[14px]" style="background:radial-gradient(130% 110% at 50% -10%, #15131f 0%, #0e0d14 52%, #090810 100%);">
               <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse 75% 60% at 50% 0%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 75% 60% at 50% 0%,#000 30%,transparent 100%);"></div>
-              <!-- blue score-ring glow -->
               <div class="absolute -top-14 left-1/2 h-40 w-72 -translate-x-1/2" style="background:radial-gradient(ellipse at center, rgba(58,122,184,.45), transparent 70%); filter:blur(38px);"></div>
               <div class="relative flex h-full flex-col items-center justify-center gap-3.5 px-6">
                 <div class="flex items-center gap-2.5">
@@ -245,160 +217,176 @@
                 </div>
               </div>
             </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2">
-                <span class="rounded-full bg-gold/15 px-2.5 py-0.5 text-xs font-semibold text-bronze">Live</span>
-                <span class="text-xs text-muted">Health &amp; self-tracking</span>
-              </div>
-              <h3 class="mt-3 font-display text-xl font-medium text-ink">Lynal — Life Analytics</h3>
-              <p class="mt-2 text-sm leading-relaxed text-body">Turns your day into a single Life Score across six pillars, with an AI analyst that tells you what to focus on next.</p>
-              <a href="https://lynal.app" target="_blank" rel="noopener" class="nav-link mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-bronze hover:text-ink">
-                Visit lynal.app <span aria-hidden="true">→</span>
-              </a>
-            </div>
+
+            <h3 class="mb-1.5 font-display text-2xl font-medium text-ink">Lynal — Life Analytics</h3>
+            <p class="mb-3.5 text-[15px] leading-relaxed text-ink/70">Turns your day into a single Life Score across six pillars, with an AI analyst that tells you what to focus on next.</p>
+            <a href="https://lynal.app" target="_blank" rel="noopener" class="text-[15px] font-semibold text-bronze hover:text-[#5f4715]">Visit lynal.app →</a>
           </article>
 
-          <!-- Stealth project -->
-          <article class="card reveal overflow-hidden rounded-[20px] border border-line bg-paper shadow-lift">
-            <div class="relative h-44 overflow-hidden bg-ink">
-              <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 20%, rgba(215,168,50,.22), transparent 60%);"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="h-16 w-16"><use href="#nile-mark-rev"/></svg>
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2">
-                <span class="rounded-full bg-ink/10 px-2.5 py-0.5 text-xs font-semibold text-body">In development</span>
-                <span class="text-xs text-muted">Mobile</span>
-              </div>
-              <h3 class="mt-3 font-display text-xl font-medium text-ink">To be revealed soon</h3>
-              <p class="mt-2 text-sm leading-relaxed text-body">A new mobile app is in the works. We're keeping this one under wraps for now — check back shortly.</p>
-              <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-muted">Coming soon</span>
-            </div>
+          <!-- Coming soon -->
+          <article data-reveal style="transition-delay:.1s;" class="w-full self-end rounded-[22px] border border-dashed border-bronze-deep/[0.28] bg-panel/60 p-6 sm:max-w-[440px]">
+            <span class="mb-3.5 inline-block rounded-full bg-gold/[0.15] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[.12em] text-eyebrow">Coming soon</span>
+            <h3 class="mb-2 font-display text-2xl font-medium text-ink">To be revealed soon</h3>
+            <p class="text-[15px] leading-relaxed text-ink/70">A new mobile app is in the works. We're keeping this one under wraps for now — check back shortly.</p>
           </article>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- ================= SERVICES ================= -->
-    <section id="services" class="relative px-4 py-20 md:py-28">
-      <div class="mx-auto max-w-5xl">
-        <div class="reveal mb-12 text-center">
-          <p class="eyebrow">What we do</p>
-          <h2 class="mt-3 font-display font-medium" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.01em;">Software, start to finish</h2>
-          <p class="mx-auto mt-3 max-w-lg text-body">We take products from idea to a shipped, maintained app — and we do the same for clients.</p>
-        </div>
-
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Mobile app development -->
-          <div class="card reveal rounded-[20px] border border-line bg-panel p-6 shadow-lift">
-            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15">
-              <svg viewBox="0 0 24 24" class="h-6 w-6 text-bronze"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            </div>
-            <h3 class="mt-4 font-display text-lg font-medium text-ink">Mobile app development</h3>
-            <p class="mt-2 text-sm leading-relaxed text-body">Native iOS &amp; Android apps designed and built in-house — fast, polished, and made to ship.</p>
+        <!-- ===== SERVICES ===== -->
+        <section id="services" class="flex flex-col items-end gap-8 py-16 sm:py-24">
+          <div data-reveal class="max-w-md text-right">
+            <p class="eyebrow mb-2.5">What we do</p>
+            <h2 class="font-display font-medium text-ink" style="font-size:clamp(2rem,4.5vw,2.9rem); line-height:1.04; letter-spacing:-.01em;">Software, start to finish</h2>
+            <p class="mt-3.5 text-base leading-relaxed text-ink/70">We take products from idea to a shipped, maintained app — and we do the same for clients.</p>
           </div>
 
-          <!-- SaaS (future) -->
-          <div class="card reveal rounded-[20px] border border-line bg-panel p-6 shadow-lift">
-            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15">
-              <svg viewBox="0 0 24 24" class="h-6 w-6 text-bronze"><path d="M6.5 15a3.5 3.5 0 0 1 .4-6.98A5 5 0 0 1 17 8.5a3.5 3.5 0 0 1 .1 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12v6M9.5 15.5 12 18l2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="mt-4 flex items-center gap-2">
-              <h3 class="font-display text-lg font-medium text-ink">SaaS platforms</h3>
-              <span class="rounded-full bg-tan/50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[.18em] text-bronze">Soon</span>
-            </div>
-            <p class="mt-2 text-sm leading-relaxed text-body">Web-based software and subscription products are on our roadmap as Nile grows beyond mobile.</p>
+          <div data-reveal class="w-full rounded-[18px] border border-bronze-deep/[0.12] bg-panel p-6 sm:max-w-[430px]">
+            <h3 class="mb-2 font-display text-[22px] font-medium text-ink">Mobile app development</h3>
+            <p class="text-[15px] leading-relaxed text-ink/70">Native iOS &amp; Android apps designed and built in-house — fast, polished, and made to ship.</p>
           </div>
 
-          <!-- Client software -->
-          <div class="card reveal rounded-[20px] border border-line bg-panel p-6 shadow-lift">
-            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15">
-              <svg viewBox="0 0 24 24" class="h-6 w-6 text-bronze"><path d="M9 8 5 12l4 4M15 8l4 4-4 4M13 5l-2 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div data-reveal style="transition-delay:.08s;" class="w-full rounded-[18px] border border-bronze-deep/[0.12] bg-panel p-6 sm:max-w-[430px]">
+            <div class="mb-2 flex items-center gap-2.5">
+              <h3 class="font-display text-[22px] font-medium text-ink">SaaS platforms</h3>
+              <span class="rounded-full bg-gold/[0.15] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[.1em] text-eyebrow">Soon</span>
             </div>
-            <h3 class="mt-4 font-display text-lg font-medium text-ink">Software for clients</h3>
-            <p class="mt-2 text-sm leading-relaxed text-body">Have an idea? We partner with founders and businesses to design and build custom apps end to end.</p>
+            <p class="text-[15px] leading-relaxed text-ink/70">Web-based software and subscription products are on our roadmap as Nile grows beyond mobile.</p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ================= ABOUT ================= -->
-    <section id="about" class="relative px-4 py-16 md:py-24">
-      <div class="mx-auto max-w-3xl text-center">
-        <div class="reveal">
-          <p class="eyebrow">About Nile</p>
-          <h2 class="mt-3 font-display font-medium" style="font-size:clamp(1.9rem,4vw,2.75rem); letter-spacing:-.01em;">From a source, everything flows</h2>
-          <p class="mx-auto mt-5 text-lg leading-relaxed text-body">
-            Nile Productivity is a mobile app development studio. We build our own products — like Lynal — and craft software for the people we work with. Our name is the idea behind the work: a river begins at a source, a single starting point, and from there it streams steady and unstoppable toward good. Every product we make starts the same way — one clear spring, carried all the way downstream to the people it's for.
+          <div data-reveal style="transition-delay:.16s;" class="w-full rounded-[18px] border border-bronze-deep/[0.12] bg-panel p-6 sm:max-w-[430px]">
+            <h3 class="mb-2 font-display text-[22px] font-medium text-ink">Software for clients</h3>
+            <p class="text-[15px] leading-relaxed text-ink/70">Have an idea? We partner with founders and businesses to design and build custom apps end to end.</p>
+          </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="flex min-h-[60vh] flex-col items-center justify-center py-16 text-center sm:py-24">
+          <p data-reveal class="eyebrow mb-3">About Nile</p>
+          <h2 data-reveal style="transition-delay:.08s; font-size:clamp(2.1rem,5vw,3.25rem); line-height:1.05; letter-spacing:-.01em;" class="mb-5 max-w-3xl font-display font-medium text-ink">From a source, everything flows</h2>
+          <p data-reveal style="transition-delay:.16s;" class="max-w-2xl text-[17px] leading-[1.65] text-ink/70">
+            A river begins at a single source and streams steady and unstoppable toward good. Every product we make starts the same way — one clear spring, carried all the way downstream to the people it's for.
           </p>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- ================= CONTACT — 1c avatar + reverse ================= -->
-    <section id="contact" class="relative px-4 pb-24 pt-6 md:pb-32">
-      <div class="mx-auto max-w-5xl">
-        <div class="reveal relative overflow-hidden rounded-[20px] bg-ink px-6 py-16 text-center sm:px-12 sm:py-20">
-          <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(120% 90% at 50% 0%, rgba(224,184,64,.16), transparent 60%);"></div>
-          <div class="relative">
-            <svg class="mx-auto h-24 w-24"><use href="#nile-mark-rev"/></svg>
-            <div class="mt-7 flex items-center justify-center gap-3.5">
-              <span class="font-display text-4xl font-medium text-creamtext" style="line-height:1; letter-spacing:-.02em;">Nile</span>
-              <span class="h-[34px] w-px" style="background:rgba(246,240,228,0.25);"></span>
-              <span class="text-[11px] font-semibold uppercase text-goldcaps" style="font-family:'Hanken Grotesk',sans-serif; letter-spacing:.32em;">Productivity</span>
-            </div>
-            <h2 class="mt-8 font-display font-medium text-creamtext" style="font-size:clamp(1.8rem,4vw,2.6rem); letter-spacing:-.01em;">Have a project in mind?</h2>
-            <p class="mx-auto mt-3 max-w-md text-creamtext/70">Tell us what you're building. We'll help you design it, build it, and ship it.</p>
-            <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href="mailto:hello@nileproductivity.com" class="btn w-full rounded-xl bg-gold px-6 py-3 text-center text-sm font-semibold text-ink shadow-gold hover:bg-gold-mid sm:w-auto">
-                hello@nileproductivity.com
-              </a>
-              <a href="https://lynal.app" target="_blank" rel="noopener" class="btn w-full rounded-xl border border-creamtext/15 px-6 py-3 text-center text-sm font-semibold text-creamtext hover:border-goldcaps/60 sm:w-auto">
-                Explore Lynal
-              </a>
-            </div>
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="flex min-h-[54vh] flex-col items-center justify-center gap-7 py-16 text-center sm:py-24">
+          <div data-reveal>
+            <p class="eyebrow mb-3">Nile Productivity</p>
+            <h2 class="max-w-2xl font-display font-medium text-ink" style="font-size:clamp(2.1rem,5vw,3.25rem); line-height:1.04; letter-spacing:-.01em;">Have a project in mind?</h2>
+            <p class="mx-auto mt-4 max-w-lg text-[17px] leading-relaxed text-ink/70">Tell us what you're building. We'll help you design it, build it, and ship it.</p>
           </div>
-        </div>
+          <div data-reveal style="transition-delay:.1s;" class="flex flex-col gap-3 sm:flex-row">
+            <a href="mailto:info@nileproductivity.com" class="btn rounded-full bg-ink px-7 py-4 text-[15px] font-semibold text-cream hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgba(42,32,24,.5)]">info@nileproductivity.com</a>
+            <a href="https://lynal.app" target="_blank" rel="noopener" class="btn rounded-full border border-bronze-deep/30 px-7 py-4 text-[15px] font-semibold text-ink hover:bg-bronze-deep/[0.07]">Explore Lynal</a>
+          </div>
+        </section>
+
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="relative z-10 px-4 py-12">
-    <div class="mx-auto max-w-6xl">
-      <div class="rule mb-10"></div>
-      <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-        <div class="flex items-center gap-2.5">
-          <svg class="h-8 w-8"><use href="#nile-mark"/></svg>
-          <span class="font-display text-lg font-medium text-ink" style="letter-spacing:-.02em;">Nile</span>
-          <span class="text-sm text-muted">· Productivity</span>
-        </div>
-        <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-body">
-          <a href="privacy.html" class="nav-link transition-colors hover:text-ink">Privacy</a>
-          <a href="terms.html" class="nav-link transition-colors hover:text-ink">Terms</a>
-          <a href="mailto:hello@nileproductivity.com" class="nav-link transition-colors hover:text-ink">hello@nileproductivity.com</a>
-        </div>
-        <p class="text-sm text-muted">© 2026 Nile Productivity</p>
+  <footer class="border-t border-bronze-deep/[0.12]">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-sm font-medium text-ink/55 sm:flex-row sm:px-8">
+      <div class="flex items-center gap-2.5">
+        <svg class="h-8 w-8"><use href="#nile-mark"/></svg>
+        <span class="font-bold text-ink">Nile · Productivity</span>
       </div>
+      <div class="flex items-center gap-6 sm:ml-auto">
+        <a href="privacy.html" class="transition-colors hover:text-ink">Privacy</a>
+        <a href="terms.html" class="transition-colors hover:text-ink">Terms</a>
+        <a href="mailto:info@nileproductivity.com" class="transition-colors hover:text-ink">info@nileproductivity.com</a>
+        <span class="hidden text-ink/40 sm:inline">© 2026 Nile Productivity</span>
+      </div>
+      <span class="text-ink/40 sm:hidden">© 2026 Nile Productivity</span>
     </div>
   </footer>
 
-  <!-- ================= SCROLL REVEAL ================= -->
+  <!-- ================= MOTION: river + reveals ================= -->
   <script>
     (function () {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var els = document.querySelectorAll('.reveal');
-      if (reduce || !('IntersectionObserver' in window)) {
-        els.forEach(function (el) { el.classList.add('in'); });
-        return;
+      var flow  = document.getElementById('flow');
+      var svg   = document.getElementById('river');
+      var base  = document.getElementById('riverBase');
+      var glow  = document.getElementById('riverGlow');
+      var light = document.getElementById('riverLight');
+      var head  = document.getElementById('riverHead');
+      var halo  = document.getElementById('riverHalo');
+      var len = 0, raf = 0, io = null;
+
+      function buildRiver() {
+        if (!flow || !svg || !base || !light) return;
+        var W = flow.clientWidth || 1200;
+        var H = flow.scrollHeight;
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        svg.setAttribute('width', W);
+        svg.setAttribute('height', H);
+        var cx = W / 2, amp = Math.min(300, W * 0.27);
+        var seg = Math.max(5, Math.round(H / 540));
+        var stepY = H / seg;
+        var d = 'M ' + cx + ' 0', px = cx, py = 0;
+        for (var i = 1; i <= seg; i++) {
+          var ny = stepY * i;
+          var nx = i === seg ? cx : cx + ((i % 2) ? amp : -amp);
+          d += ' C ' + px + ' ' + (py + stepY * 0.5) + ', ' + nx + ' ' + (ny - stepY * 0.5) + ', ' + nx + ' ' + ny;
+          px = nx; py = ny;
+        }
+        base.setAttribute('d', d);
+        glow.setAttribute('d', d);
+        light.setAttribute('d', d);
+        len = light.getTotalLength();
+        light.style.strokeDasharray = len + ' ' + len;
+        glow.style.strokeDasharray = len + ' ' + len;
+        if (reduce) { light.style.strokeDashoffset = 0; glow.style.strokeDashoffset = 0; }
+        else onScroll();
       }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-      els.forEach(function (el) { io.observe(el); });
+
+      function onScroll() {
+        if (!len || !light) return;
+        var se = document.scrollingElement || document.documentElement;
+        var max = se.scrollHeight - se.clientHeight;
+        var p = max > 0 ? Math.min(1, Math.max(0, se.scrollTop / max)) : 0;
+        if (reduce) { light.style.strokeDashoffset = 0; glow.style.strokeDashoffset = 0; return; }
+        var off = len * (1 - p);
+        light.style.strokeDashoffset = off;
+        glow.style.strokeDashoffset = off;
+        if (head && halo) {
+          if (p > 0.006 && p < 0.996) {
+            var pt = light.getPointAtLength(len * p);
+            head.setAttribute('cx', pt.x); head.setAttribute('cy', pt.y);
+            halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y);
+            head.style.opacity = 1; halo.style.opacity = 0.85;
+          } else { head.style.opacity = 0; halo.style.opacity = 0; }
+        }
+      }
+
+      function reveals() {
+        if (!flow) return;
+        var els = flow.querySelectorAll('[data-reveal]');
+        if (reduce || !('IntersectionObserver' in window)) {
+          els.forEach(function (e) { e.classList.add('in'); });
+          return;
+        }
+        if (!io) {
+          io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+            });
+          }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+        }
+        els.forEach(function (e) { if (!e.dataset.obs) { e.dataset.obs = '1'; io.observe(e); } });
+      }
+
+      function tick() { buildRiver(); reveals(); }
+
+      var onsc = function () { if (raf) return; raf = requestAnimationFrame(function () { raf = 0; onScroll(); }); };
+      window.addEventListener('scroll', onsc, { passive: true });
+      window.addEventListener('resize', buildRiver);
+      if (window.ResizeObserver && flow) { new ResizeObserver(buildRiver).observe(flow); }
+
+      requestAnimationFrame(tick);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(tick);
+      setTimeout(tick, 400);
     })();
   </script>
 </body>
