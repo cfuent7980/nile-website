@@ -184,30 +184,23 @@
           <!-- Lynal card (PRESERVED lynal.app-style tile) -->
           <article data-reveal class="w-full self-start rounded-[22px] border border-bronze-deep/[0.12] bg-panel p-6 shadow-[0_24px_50px_-28px_rgba(107,74,28,.5)] sm:max-w-[480px]">
             <div class="mb-4 flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-[13px] font-sans text-lg font-extrabold text-[#5f4715]" style="background:linear-gradient(150deg,#d7a832,#edd9a8);">L</div>
+              <img src="lynal-icon.png" alt="Lynal app icon" width="44" height="44" loading="lazy" class="h-11 w-11 rounded-[13px] shadow-[0_5px_14px_-5px_rgba(88,74,170,.7)]" />
               <div>
                 <div class="font-sans text-[17px] font-bold text-ink">Lynal</div>
                 <div class="font-sans text-xs font-medium text-eyebrow">Live · Health &amp; self-tracking</div>
               </div>
             </div>
 
-            <!-- preserved dark Lynal preview (matches lynal.app) -->
-            <div class="relative mb-4 h-52 overflow-hidden rounded-[14px]" style="background:radial-gradient(130% 110% at 50% -10%, #15131f 0%, #0e0d14 52%, #090810 100%);">
-              <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse 75% 60% at 50% 0%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 75% 60% at 50% 0%,#000 30%,transparent 100%);"></div>
-              <div class="absolute -top-14 left-1/2 h-40 w-72 -translate-x-1/2" style="background:radial-gradient(ellipse at center, rgba(58,122,184,.45), transparent 70%); filter:blur(38px);"></div>
-              <div class="relative flex h-full flex-col items-center justify-center gap-3.5 px-6">
-                <div class="flex items-center gap-2.5">
-                  <span class="flex h-9 w-9 items-center justify-center rounded-[11px] border border-[#5aa6e6]/25 bg-[#15141e]" style="box-shadow:0 0 0 1px rgba(90,166,230,.10), 0 6px 18px -6px rgba(58,122,184,.5);">
-                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none">
-                      <defs><linearGradient id="lyGem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5aa6e6"/><stop offset="1" stop-color="#9a7ac8"/></linearGradient></defs>
-                      <path d="M12 2.6 20 7v10l-8 4.4L4 17V7z" stroke="url(#lyGem)" stroke-width="1.7" stroke-linejoin="round"/>
-                      <path d="M12 2.6V12M12 12l8-5M12 12l-8-5" stroke="url(#lyGem)" stroke-width="1.4" stroke-linejoin="round" opacity=".85"/>
-                    </svg>
-                  </span>
-                  <span class="lynal-type text-2xl font-semibold text-[#e8e8f0]">Lynal</span>
-                </div>
-                <p class="lynal-type text-sm text-[#8c97a6]">One score for your whole day.</p>
-                <div class="flex items-center gap-2.5">
+            <!-- Lynal preview: real app icon + Home / Life Score screen -->
+            <div class="relative mb-4 h-72 overflow-hidden rounded-[14px]" style="background:radial-gradient(135% 115% at 28% -10%, #16131f 0%, #0e0d14 52%, #08070d 100%);">
+              <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse 80% 70% at 28% 0%,#000 28%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 28% 0%,#000 28%,transparent 100%);"></div>
+              <div class="absolute -top-16 left-6 h-44 w-64" style="background:radial-gradient(ellipse at center, rgba(58,122,184,.42), transparent 70%); filter:blur(42px);"></div>
+
+              <!-- copy -->
+              <div class="absolute left-6 top-1/2 z-10 max-w-[46%] -translate-y-1/2">
+                <p class="lynal-type text-[11px] font-semibold uppercase tracking-[.24em] text-[#6c8cae]">Lynal</p>
+                <p class="lynal-type mt-2 font-semibold leading-[1.08] text-[#eaeaf2]" style="font-size:26px;">Your life,<br>measured</p>
+                <div class="mt-5 flex items-center gap-2">
                   <span class="h-2 w-2 rounded-full" style="background:#3a7ab8;" title="Discipline"></span>
                   <span class="h-2 w-2 rounded-full" style="background:#3a7a4a;" title="Physical"></span>
                   <span class="h-2 w-2 rounded-full" style="background:#9a7ac8;" title="Mental"></span>
@@ -216,10 +209,22 @@
                   <span class="h-2 w-2 rounded-full" style="background:#c85a7a;" title="Social"></span>
                 </div>
               </div>
+
+              <!-- phone: the real Life Score home screen -->
+              <div class="absolute right-3 top-7" style="transform:rotate(-6deg);">
+                <div class="floaty">
+                  <div class="rounded-[30px] bg-[#0b0a10] p-[5px] shadow-[0_26px_50px_-16px_rgba(0,0,0,.75)] ring-1 ring-white/10">
+                    <div class="relative w-[152px] overflow-hidden rounded-[26px]">
+                      <span class="absolute left-1/2 top-2 z-10 h-1.5 w-11 -translate-x-1/2 rounded-full bg-black/70"></span>
+                      <img src="lynal-home.jpg" alt="Lynal — Life Score home screen" width="152" height="330" loading="lazy" class="block w-[152px]" style="height:330px;object-fit:cover;object-position:top center;" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h3 class="mb-1.5 font-display text-2xl font-medium text-ink">Lynal — Life Analytics</h3>
-            <p class="mb-3.5 text-[15px] leading-relaxed text-ink/70">Turns your day into a single Life Score across six pillars, with an AI analyst that tells you what to focus on next.</p>
+            <h3 class="mb-1.5 font-display text-2xl font-medium text-ink">Lynal: Life Analytics</h3>
+            <p class="mb-3.5 text-[15px] leading-relaxed text-ink/70">Lynal turns your current life into a single Life Score across pillars, and Lyli, your AI analyst tells you what to focus on next.</p>
             <a href="https://lynal.app" target="_blank" rel="noopener" class="text-[15px] font-semibold text-bronze hover:text-[#5f4715]">Visit lynal.app →</a>
           </article>
 
